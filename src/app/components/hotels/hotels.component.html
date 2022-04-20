@@ -1,0 +1,7 @@
+<div *ngFor="let hotel of hotels">
+    <h2>{{hotel.name}}</h2>
+    <div><span>code: </span>{{hotel.code}}</div>
+    <div><span>name: </span>{{hotel.name}}</div>
+    <div><span>city: </span>{{hotel.city}}</div>
+    <app-rooms *ngIf="hotel.rooms"></app-rooms>
+</div>
