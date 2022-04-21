@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hotel } from 'src/app/models/hotel';
-import { HotelesAtalayaService } from 'src/app/services/hoteles-atalaya-service/hoteles-atalaya.service';
-import { ResortHotelesService } from 'src/app/services/resort-hoteles-service/resort-hoteles.service';
+import { HotelsService } from 'src/app/services/hotels-service.service';
 
 @Component({
   selector: 'app-hotels',
@@ -10,30 +9,17 @@ import { ResortHotelesService } from 'src/app/services/resort-hoteles-service/re
 })
 export class HotelsComponent implements OnInit {
 
-  hotels: Hotel[] = [];
+  hotelsList : {hotels: Hotel[]} = { hotels: [] };
 
   constructor(
-    private hoteles_atalayaService : HotelesAtalayaService,
-    private resort_hotelesService: ResortHotelesService,
+    private all_hotels_service : HotelsService,
   ) { }
 
   ngOnInit(): void {
-    this.hoteles_atalayaService.getData();
-    this.hoteles_atalayaService.getHotels$().subscribe(atalayaHotels => {
-      this.addHotels(atalayaHotels);
-    });
-    
-    this.resort_hotelesService.getData();
-    this.resort_hotelesService.getHotels$().subscribe(resortHotels => {
-      this.addHotels(resortHotels);
-    });
-    console.log(this.hotels);
-  }
-
-  addHotels(hotels: Hotel[]) {
-    hotels.forEach(hotel => {
-      this.hotels.push(hotel);
-    })
+    this.all_hotels_service.getData();
+    this.all_hotels_service.getHotelsList$().subscribe((allHotels: {hotels: Hotel[]}) => {
+      this.hotelsList = allHotels;
+    }); 
   }
 
 }

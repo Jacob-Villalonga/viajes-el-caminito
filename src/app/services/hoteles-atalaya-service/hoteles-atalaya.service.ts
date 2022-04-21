@@ -26,9 +26,6 @@ export class HotelesAtalayaService {
     this.http.get('http://www.mocky.io/v2/5e4a7e4f2f00005d0097d253').subscribe(jsonHotels => {
       this.http.get('https://run.mocky.io/v3/132af02e-8beb-438f-ac6e-a9902bc67036').subscribe(jsonRooms => {
         this.http.get('http://www.mocky.io/v2/5e4a7e282f0000490097d252').subscribe(jsonMeals => {
-          console.log("atalaya hotels", jsonHotels);
-          console.log("atalaya rooms", jsonRooms);
-          console.log("atalaya meals", jsonMeals);
         this.fillHotels(jsonHotels, jsonRooms, jsonMeals);
         });
       });

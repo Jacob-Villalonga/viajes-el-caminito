@@ -25,8 +25,6 @@ export class ResortHotelesService {
     console.log("resort_hotelesService getData");
     this.http.get('http://www.mocky.io/v2/5e4e43272f00006c0016a52b').subscribe(jsonHotels => {
       this.http.get('http://www.mocky.io/v2/5e4a7dd02f0000290097d24b').subscribe(jsonMeals => {
-        console.log("resort hotels", jsonHotels);
-        console.log("resort meals", jsonMeals);
         this.fillHotels(jsonHotels, jsonMeals);
       });
     });
