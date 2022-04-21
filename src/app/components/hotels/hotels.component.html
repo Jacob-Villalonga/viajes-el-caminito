@@ -1,7 +1,8 @@
-<div *ngFor="let hotel of hotelsList.hotels">
+<div *ngFor="let hotel of hotelsList.hotels" class="hotel-class">
     <h2>{{hotel.name}}</h2>
     <div><span>code: </span>{{hotel.code}}</div>
     <div><span>name: </span>{{hotel.name}}</div>
     <div><span>city: </span>{{hotel.city}}</div>
-    <app-rooms *ngIf="hotel.rooms"></app-rooms>
+    <h3>Rooms:</h3>
+    <app-rooms *ngFor="let room of hotel.rooms" [room]="room"></app-rooms>
 </div>
